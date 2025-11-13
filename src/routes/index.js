@@ -5,7 +5,6 @@ router.get('/', (req, res) => {
     res.send("Healthy")
 });
 
-
-router.use('/v1/user', require('./user.route'));
+router.use('/v1/users', require('./user.route'));
 
 module.exports = router;

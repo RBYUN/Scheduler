@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
+var config = require('../config/config');
 
 const User = sequelize.define('user', {
     first_name: {
@@ -32,7 +33,8 @@ const User = sequelize.define('user', {
         allowNull: false
     }},
     {
-        tableName: 'users',
+        schema: config.postgres.user.schema,
+        tableName: config.postgres.user.tableName,
         timestamps: false
     });
 

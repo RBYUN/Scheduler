@@ -3,6 +3,10 @@ const router = express.Router();
 
 const { UserController } = require('../controllers');
 
-router.post('/creates', UserController.createUser);
+const { ValidateRequestBodyMiddleware } = require('../middlewares');
+
+const { UserSchema } = require('../schemas');
+
+router.post('/create', ValidateRequestBodyMiddleware(UserSchema), UserController.createUser);
 
 module.exports = router;
