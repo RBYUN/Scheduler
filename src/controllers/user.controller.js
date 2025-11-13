@@ -8,6 +8,8 @@ class UserController {
     
     async createUser(req, res, next) {
         try {
+            console.log(request)
+            console.log(request.body);
             const user = await UserService.createUser(req);
 
             return res.status(StatusCodes.OK).json(user);
