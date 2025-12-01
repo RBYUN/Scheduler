@@ -1,4 +1,6 @@
+const { str } = require('ajv');
 const { User } = require('../models');
+const EmailService = require('./email.service');
 
 class UserService {
     async hashPassword(password) {
@@ -19,8 +21,10 @@ class UserService {
     async createUser(req, res, next) {
         try {
             const hashedPassword = await this.hashPassword(req.password);
+            const email = req.email.toLowerCase();
+            const firstName = req.firstname[0].toUpperCase() + req.firstname.slice(1).toLowerCase();
 
-            await User.create({
+            const newUser = await User.create({
                 first_name: req.firstname.toLowerCase(),
                 last_name: req.lastname.toLowerCase(),
                 email: req.email.toLowerCase(),
@@ -30,6 +34,7 @@ class UserService {
                 verified: false
             });
             console.log(`User ${req.email} has been added.`)
+            await EmailService.sendVerificationEmail(email, newUser.id, firstName)
         } catch (err) {
             console.error(err);
             if (err.original.code === '23505') { //Duplicate email
