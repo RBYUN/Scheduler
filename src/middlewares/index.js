@@ -1,3 +1,3 @@
-const ValidateRequestBodyMiddleware = require('./validaterequestbody.middleware');
+const ValidateUserCreationMiddleware = require('./validateUserCreation.middleware');
 
-module.exports = { ValidateRequestBodyMiddleware };
+module.exports = { ValidateUserCreationMiddleware };

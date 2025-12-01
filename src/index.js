@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express();
 
 require('./db');
-app.use(express.json());
+app.use(express.json()); //built in middleware that will parse all incoming JSON requests
 app.use(cors());
 
 app.use(require('./routes'));

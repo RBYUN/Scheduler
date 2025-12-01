@@ -8,7 +8,7 @@ class UserController {
     
     async createUser(req, res, next) {
         try {
-            const user = await UserService.createUser(req.body);
+            const user = await UserService.createUser(req.body, res, next);
 
             return res.status(StatusCodes.OK).json(user);
         } catch (err) {
@@ -18,4 +18,3 @@ class UserController {
 }
 
 module.exports = new UserController();
-

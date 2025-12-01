@@ -7,14 +7,13 @@ const ajvInstance = new Ajv({
 const schema = {
     type: "object",
     properties: {
-        first_name: {type: "string"},
-        last_name: {type: "string"},
+        firstname: {type: "string"},
+        lastname: {type: "string"},
         email: {type: "string"},
-        username: {type: "string"},
         password: {type: "string"},
-        admin: {type: "boolean"}
+        verified: {type: "boolean"}
     },
-    required: ["first_name", "last_name", "email", "username", "password", "admin" ],
+    required: ["firstname", "lastname", "email", "password" ],
     additionalProperties: false
 };
 
