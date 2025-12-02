@@ -22,7 +22,7 @@ class EmailService {
         try {
             let htmlContent = fs.readFileSync("src/config/verificationEmail.html", 'utf8');
             
-            const verificationLink = `https://yourdomain.com/verify?token=${uuid}`;
+            const verificationLink = `${config.ui.domain}/accounts/login?verified=true&id=${uuid}`;
 
             htmlContent = htmlContent
                 .replace('{{first_name}}', firstName)

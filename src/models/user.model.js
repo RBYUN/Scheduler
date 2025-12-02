@@ -27,6 +27,10 @@ const User = sequelize.define('user', {
     admin: {
         type: Sequelize.BOOLEAN,
         allowNull: false
+    },
+    verified: {
+        type: Sequelize.BOOLEAN,
+        allowNULL: false
     }},
     {
         schema: config.postgres.user.schema,

@@ -14,6 +14,16 @@ class UserController {
             return next(err);
         }
     }
+
+    async verifyUser(req, res, next) {
+        try {
+            const user = await UserService.verifyUser(req, res, next);
+            return res.status(StatusCodes.OK).json(user);
+        } catch (err) {
+
+            return next(err);
+        }
+    }
 }
 
 module.exports = new UserController();

@@ -43,6 +43,20 @@ class UserService {
             next(err)
         }
     }
+
+    async verifyUser(req, res, next) {
+        try {
+            const user = await User.findByPk(req.query.id);
+            console.log(user);
+            user.verified = true;
+            await user.save();
+            res.status(200);
+            console.log(`User ${req.query.id} has been verified`)
+        } catch (err) {
+            console.log(err)
+            next(err)
+        }
+    }
 }
 
 module.exports = new UserService();

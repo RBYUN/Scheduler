@@ -12,8 +12,7 @@ const ValidateUserCreationMiddleware = (ajvInstance) => {
               }
             */
             await ajvInstance(req.body);
-            
-
+            res.status(200);
             return next();
         } catch (err) {
             
